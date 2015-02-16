@@ -18,16 +18,16 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Check if matrix inverse is already cached, if YEs, display it otherwise calculate it
+## Check if matrix inverse is already cached, if Yes, display it otherwise calculate it
 
 cacheSolve <- function(x, ...) {
         m <- x$getinv()
-        if(!is.null(m)) {
+        if(!is.null(m)) { ## inverse exists already
                 message("getting cached data")
                 return(m)
         }
         data <- x$get()
-        m <- solve(data,diag(nrow(data)))
+        m <- solve(data,diag(nrow(data))) ## inverse need to be calculated
         x$setinv(m)
         m
 }
